@@ -1,0 +1,62 @@
+{
+  "name": "PlmNavFlexibleEntityValues",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "entityId": {
+      "type": "number",
+      "required": true
+    },
+    "attr1": {
+      "type": "string"
+    },
+    "attr2": {
+      "type": "string"
+    },
+    "attr3": {
+      "type": "string"
+    },
+    "attr4": {
+      "type": "string"
+    },
+    "attr5": {
+      "type": "string"
+    },
+    "attr6": {
+      "type": "string"
+    },
+    "attr7": {
+      "type": "string"
+    },
+    "attr8": {
+      "type": "string"
+    },
+    "attr9": {
+      "type": "string"
+    },
+    "attr10": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

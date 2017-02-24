@@ -1,0 +1,40 @@
+{
+  "name": "plmNavAttrValueSetValues",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "valueSetId": {
+      "type": "number",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

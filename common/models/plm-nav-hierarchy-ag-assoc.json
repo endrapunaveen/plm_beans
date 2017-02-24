@@ -1,0 +1,36 @@
+{
+  "name": "plmNavHierarchyAgAssoc",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "attrGroupId": {
+      "type": "number",
+      "required": true
+    },
+    "hierarchyNodeId": {
+      "type": "number",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

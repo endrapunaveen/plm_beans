@@ -1,0 +1,60 @@
+{
+  "name": "PlmNavHierarchyNodes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "indexes": {
+    "hierarchy_type_level_idx": {
+      "keys": {
+        "hierarchyTypeFkId": 1,
+        "hierarchyLevelFkId": 1
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "hierarchyName": {
+      "type": "string",
+      "required": true
+    },
+    "uniqueKey": {
+      "type": "string",
+      "required": false
+    },
+    "categoryNumber": {
+      "type": "string",
+      "required": false
+    },
+    "parentHierarchyId": {
+      "type": "number",
+      "index": true
+    },
+    "hierarchyTypeFkId": {
+      "type": "number",
+      "required": true
+    },
+    "hierarchyLevelFkId": {
+      "type": "number",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

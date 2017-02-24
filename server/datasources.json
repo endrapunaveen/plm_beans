@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "plmdev": {
+    "host": "tac-621.cggg60buoh8g.eu-central-1.rds.amazonaws.com",
+    "port": 3306,
+    "database": "naveen",
+    "password": "naveen",
+    "name": "plmdev",
+    "user": "naveen",
+    "connector": "mysql"
+  }
+}

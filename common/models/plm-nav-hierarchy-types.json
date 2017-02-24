@@ -1,0 +1,45 @@
+{
+  "name": "PlmNavHierarchyTypes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "hierarchyType": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    },
+    "isAttributeHierarchy": {
+      "type": "boolean",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "plmNavHierarchyLevels": {
+      "type": "hasMany",
+      "model": "PlmNavHierarchyLevels",
+      "foreignKey": "hierarchyTypeFkId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

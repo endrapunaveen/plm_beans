@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "PlmNavHierarchyTypes": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavHierarchyLevels": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavHierarchyNodes": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavAttrGroups": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavAttributes": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "plmNavAttrValueSets": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "plmNavAttrValueSetValues": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "plmNavHierarchyAgAssoc": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavFlexibleEntities": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavFlexibleEntitiesColumns": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "PlmNavFlexibleEntityValues": {
+    "dataSource": "plmdev",
+    "public": true
+  }
+}

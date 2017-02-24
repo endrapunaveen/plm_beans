@@ -1,0 +1,130 @@
+{
+  "Hierarchy": [
+    {
+      "childrenId": "B3,B4,B6,B8,B9",
+      "categoryNumber": "200",
+      "uniqueKey": "B",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "BREAD/BAKERY & REST.",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "F1,F3,F4,F5,F7,F8",
+      "categoryNumber": "600",
+      "uniqueKey": "F",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "FRESH FOODS",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "G1,G2,G3,G4,G5,G6,G7,G8,G9",
+      "categoryNumber": "700",
+      "uniqueKey": "G",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "AMBIENT DRY GROCERY",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "H1,H2,H3,H4,H5,H6,H7,H9",
+      "categoryNumber": "800",
+      "uniqueKey": "H",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "HOME & WEAR",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "J1",
+      "categoryNumber": "1000",
+      "uniqueKey": "J",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "NON SCANNING GARDN CENTR",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "L1,L2",
+      "categoryNumber": "1200",
+      "uniqueKey": "L",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "PFS KIOSKS",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "N3,N5,N7,N8,N9",
+      "categoryNumber": "1400",
+      "uniqueKey": "N",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "NON FOODS GROCERY",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "P1",
+      "categoryNumber": "1600",
+      "uniqueKey": "P",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "GARAGE",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "R1",
+      "categoryNumber": "1800",
+      "uniqueKey": "R",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "NON SCANNING COFFEE SHOP",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "T1,T5,T6,T7,T8",
+      "categoryNumber": "2000",
+      "uniqueKey": "T",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "TOBACCO KIOSKS",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "V1",
+      "categoryNumber": "2200",
+      "uniqueKey": "V",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "TESCO MOBILE",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "W3,W4,W6,W8,W9",
+      "categoryNumber": "2300",
+      "uniqueKey": "W",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "WINES & SPIRITS",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "X1,X2,X3,X4,X5",
+      "categoryNumber": "2400",
+      "uniqueKey": "X",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "DEPT KEY ENTRY",
+      "parentId": "CommercialRoot"
+    },
+    {
+      "childrenId": "Z1,Z2,Z3,Z4,Z5,Z6,Z7,Z8,Z9",
+      "categoryNumber": "2600",
+      "uniqueKey": "Z",
+      "hierarchyLevel": "Division",
+      "hierarchy": "Commercial",
+      "categoryName": "MISCELLANEOUS ITEMS",
+      "parentId": "CommercialRoot"
+    }
+  ]
+}

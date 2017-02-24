@@ -1,0 +1,26 @@
+{
+  "name": "PlmNavFlexibleEntitiesColumns",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "entityId": {
+      "type": "number",
+      "required": true
+    },
+    "entityFieldName": {
+      "type": "string",
+      "required": true
+    },
+    "dbColumnName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

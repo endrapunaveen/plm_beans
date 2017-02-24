@@ -1,0 +1,100 @@
+{
+  "name": "PlmNavAttributes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "attrDispName": {
+      "type": "string",
+      "required": true
+    },
+    "attrIntName": {
+      "type": "string",
+      "required": true
+    },
+    "dataType": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "string",
+        "number",
+        "date"
+      ]
+    },
+    "valueSetId": {
+      "type": "number",
+      "required": false
+    },
+    "dbColumnName": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "string1",
+        "string2",
+        "string3",
+        "string4",
+        "string5",
+        "string6",
+        "string7",
+        "string8",
+        "string9",
+        "string10",
+        "number1",
+        "number2",
+        "number3",
+        "number4",
+        "number5",
+        "number6",
+        "number7",
+        "number8",
+        "number9",
+        "number10",
+        "date1",
+        "date2",
+        "date3",
+        "date4",
+        "date5",
+        "date6",
+        "date7",
+        "date8",
+        "date9",
+        "date10"
+      ]
+    },
+    "uniqueKeyFlag": {
+      "type": "boolean"
+    },
+    "requiredFlag": {
+      "type": "boolean",
+      "required": true,
+      "defaultValue": false
+    },
+    "defaultValue": {
+      "type": "string"
+    },
+    "attrGroupId": {
+      "type": "number",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

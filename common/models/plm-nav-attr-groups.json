@@ -1,0 +1,55 @@
+{
+  "name": "PlmNavAttrGroups",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "attrGroupDispName": {
+      "type": "string",
+      "required": true
+    },
+    "attrGroupIntName": {
+      "type": "string",
+      "required": true
+    },
+    "attGroupBehaviour": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Single Row",
+        "Multi Row",
+        "Variant"
+      ],
+      "default": "Single Row"
+    },
+    "attrGroupType": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Product Level",
+        "Dynamic"
+      ],
+      "default": "Dynamic"
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
