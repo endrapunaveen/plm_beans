@@ -144,21 +144,22 @@ async.waterfall(
                             };
 
             //console.log(hierarchyNode1);
-
+            
             if (hierarchyNode.parentId.length > 0) {
               if (!parentHierarchyMap.hasOwnProperty(hierarchyNode.parentId )) {
                 var pickedParentHierarchy = lodash.filter(parentHierarchiesList, 
                 { 'uniqueKey':  hierarchyNode.parentId } );
                 
-                parentHierarchyMap[pickedParentHierarchy.uniqueKey] = pickedParentHierarchy[0].id;
-              }
+                parentHierarchyMap[hierarchyNode.parentId] = pickedParentHierarchy[0].id;
+            }
 
               hierarchyNode1.parentHierarchyId = parentHierarchyMap[hierarchyNode.parentId];
             }
-
+            
             values.push(
               [ hierarchyNode1.hierarchyName, hierarchyNode1.uniqueKey, 
-                hierarchyNode1.parentHierarchyId , hierarchyNode1.hierarchyTypeFkId , 
+                hierarchyNode1.parentHierarchyId ,
+                hierarchyNode1.hierarchyTypeFkId , 
                 hierarchyNode1.hierarchyLevelFkId, hierarchyNode1.createdAt,
                 hierarchyNode1.lastModifiedAt
               ]);

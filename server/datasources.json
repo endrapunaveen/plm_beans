@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "plmdev": {
-    "host": "tac-621.cggg60buoh8g.eu-central-1.rds.amazonaws.com",
+    "host": "plm-631-dev-cluster.cluster-cqz8la9buqcy.eu-west-1.rds.amazonaws.com",
     "port": 3306,
     "database": "naveen",
     "password": "naveen",

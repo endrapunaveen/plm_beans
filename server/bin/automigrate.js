@@ -11,6 +11,7 @@ var PlmNavAttributesModel = require('../../common/models/plm-nav-attributes.json
 var PlmNavFlexibleEntitiesModel = require('../../common/models/plm-nav-flexible-entities.json');
 var PlmNavFlexibleEntitiesColumnsModel = require('../../common/models/plm-nav-flexible-entities-columns.json');
 var PlmNavFlexibleEntityValuesModel = require('../../common/models/plm-nav-flexible-entity-values.json');
+var PlmNavHierarchyAgAssocModel = require('../../common/models/plm-nav-hierarchy-ag-assoc.json');
 
 var listOfModels = [
 	{"modelName": 'PlmNavHierarchyLevels', "model": PlmNavHierarchyLevelsModel},
@@ -19,6 +20,7 @@ var listOfModels = [
 	{"modelName": 'PlmNavAttrValueSetValues', "model": PlmNavAttrValueSetValuesModel},
 	{"modelName": 'PlmNavAttrValueSets', "model": PlmNavAttrValueSetsModel},
 	{"modelName": 'PlmNavAttrGroups', "model": PlmNavAttrGroupsModel},
+	{"modelName": "PlmNavHierarchyAgAssoc", "model": PlmNavHierarchyAgAssocModel},
 	{"modelName": 'PlmNavAttributes', "model": PlmNavAttributesModel},
 	{"modelName": 'PlmNavFlexibleEntities', "model": PlmNavFlexibleEntitiesModel},
 	{"modelName": 'PlmNavFlexibleEntitiesColumns', "model": PlmNavFlexibleEntitiesColumnsModel},

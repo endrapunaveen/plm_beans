@@ -15,28 +15,92 @@ var workbook = XLSX.readFile(inputFileName);
 var sheet_name_list = workbook.SheetNames;
 var attributeGroups = [];
 var valueSets = [];
+var count=0;
 
 var dataSource = app.dataSources.plmdev;
+
+createAGAndHierarchyAssoc = function(attributeGroup, callback) {
+	var PlmNavAttrGroups = app.models.PlmNavAttrGroups;
+	var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;	
+	var PlmNavHierarchyAgAssoc = app.models.PlmNavHierarchyAgAssoc;
+	
+PlmNavAttrGroups.create(attributeGroup, function(err, attributeGroupRecord) {
+    if (err) return console.log(err);
+
+    attributeGroups.push({"attrGroupIntName": attributeGroupRecord.attrGroupIntName,
+    	"id": attributeGroupRecord.id
+	});
+
+    PlmNavHierarchyNodes.find(
+      { where: { hierarchyName: attributeGroup.categoryName }, 
+      	fields: {id: true, hierarchyName: true} 
+      }, 
+    function(err, hierarchyNode) {
+      if (err) {
+        callback(err, null);
+      } else {
+      	var agHierarchyAssoc = {
+		  attrGroupId: attributeGroupRecord.id,
+		  hierarchyNodeId: hierarchyNode[0].id,
+		  createdAt: new Date(),
+		  lastModifiedAt: new Date()
+		}
+        PlmNavHierarchyAgAssoc.create(agHierarchyAssoc, function(err, agHierarchyAssocRecord){
+        	if (err) return console.log(err);
+
+        	count--;
+
+            if (count === 0) {
+              //dataSource.disconnect();
+              
+              var caption = "	√√ attributeGroups Loading : Done ";
+              console.log(colors.green(caption));
+
+              callback(null, attributeGroups);
+              //process.exit();
+            }
+        });
+      }
+    });
+
+    /*
+    count--;
+
+    if (count === 0) {
+      //dataSource.disconnect();
+      
+      var caption = "	√√ attributeGroups Loading : Done ";
+      console.log(colors.green(caption));
+
+      callback(null, attributeGroups);
+      //process.exit();
+    }
+    */
+});
+}
 
 async.waterfall(
 [
     function(callback) {
 	  	// Load Attribute Groups
 		sheet_name_list.forEach(function(y) {
-			
 			if (y == "Attribute Groups") {
-				console.log("Loading "+y);
+				
 			  	var worksheet = workbook.Sheets[y];
 			    var ags =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
 
 			    var attGroupBehaviour = '';
 			    var PlmNavAttrGroups = app.models.PlmNavAttrGroups;
-		        var count = ags.length;
+		        count = ags.length;
+
+		        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
+		        var PlmNavHierarchyAgAssoc = app.models.PlmNavHierarchyAgAssoc;
 
 			    for (var idx=0; idx < count; idx++) {
 			    	attGroupBehaviour = ags[idx]["Multi-Row?"]=="Yes" ? "Multi Row" : "Single Row";
 
 					var attributeGroup = {
+					  "categoryName": ags[idx]["Category Name"] ,
 					  "attrGroupDispName": ags[idx]["Display Name"],
 					  "attrGroupIntName": ags[idx]["Internal Name"],
 					  "attGroupBehaviour": attGroupBehaviour,
@@ -44,24 +108,13 @@ async.waterfall(
 					  lastModifiedAt: new Date()
 					}
 
-					PlmNavAttrGroups.create(attributeGroup, function(err, attributeGroupRecord) {
-			            if (err) return console.log(err);
-
-			            attributeGroups.push({"attrGroupIntName": attributeGroupRecord.attrGroupIntName,
-			            	"id": attributeGroupRecord.id
-			        	});
-
-			            count--;
-
-			            if (count === 0) {
-			              //dataSource.disconnect();
-			              
-			              var caption = "	√√ attributeGroups Loading : Done ";
-			              console.log(colors.green(caption));
-			              callback(null, attributeGroups);
-			              //process.exit();
-			            }
-			        });
+					createAGAndHierarchyAssoc(attributeGroup, function(err, result) {
+						if (err) {
+				            callback(err, null);
+				        } else {
+				        	callback(null, result);
+				        }
+					});
 			    }	           	
 			}
 		});
@@ -107,6 +160,42 @@ async.waterfall(
 		});
     },
     function(valueSetsList, valueSetValuesList, attributeGroupsList, callback) {
+    	console.log('Loading valueSet Values')
+    	// Load Value Set Values
+	    var plmNavAttrValueSetValues = app.models.plmNavAttrValueSetValues;
+	    var count = valueSetValuesList.length;
+	    console.log("Total value set values : "+count);
+
+	    valueSetValuesList.forEach(function(valueSetValueIn) {
+	      var pickedValueSet = lodash.filter(valueSetsList, 
+	        { 'valueSetName':  valueSetValueIn["LOV Name"]} );
+
+	      valueSetValueIn.valueSetId = pickedValueSet[0].id;
+
+	      var valueSetValue = {
+			  "key": valueSetValueIn.Key,
+			  "value": valueSetValueIn.Value,
+			  "valueSetId": pickedValueSet[0].id,
+			  "createdAt": new Date(),
+			  "lastModifiedAt": new Date()
+			};
+
+	       plmNavAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
+	        if (err) return console.log(err);
+
+	        count--;
+	        console.log('remaining valueSet Values : '+count);
+	        if (count === 0) {
+	          //dataSource.disconnect();
+	          
+	          var caption = "	√√ Value Set Values Loading : Done ";
+	          console.log(colors.green(caption));
+	          callback(null, valueSetsList, attributeGroupsList);
+	        }
+	      });
+	    });
+    },
+    function(valueSetsList, attributeGroupsList, callback) {
 
     	sheet_name_list.forEach(function(y) {
 			if (y == "Attributes") {
@@ -169,6 +258,7 @@ async.waterfall(
 			}
 		});
 
+    	/*
     	// Load Value Set Values
 	    var plmNavAttrValueSetValues = app.models.plmNavAttrValueSetValues;
 	    var count = valueSetValuesList.length;
@@ -187,6 +277,8 @@ async.waterfall(
 			  "lastModifiedAt": new Date()
 			};
 
+			console.log(valueSetValue);
+
 	       // insert new records into the Account table
 	       plmNavAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
 	        if (err) return console.log(err);
@@ -201,6 +293,7 @@ async.waterfall(
 	        }
 	      });
 	    });
+	    */
     },
     function(caption, callback) {
 		callback(null, caption);
@@ -216,6 +309,10 @@ async.waterfall(
     	process.exit();
   	}
 );
+
+
+
+
 
 
 

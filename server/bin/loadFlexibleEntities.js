@@ -21,13 +21,14 @@ var dataSource = app.dataSources.plmdev;
 async.waterfall(
 [
     function(callback) {
-	  	// Load Attribute Groups
+	  	
 		sheet_name_list.forEach(function(y) {
 			
 			if (y == "FlexibleEntities") {
-				console.log("Loading "+y);
+				console.log("++++++ Loading "+y);
 			  	var worksheet = workbook.Sheets[y];
 			    var flexEntities =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
+			    console.log(flexEntities);
 
 			    var PlmNavFlexibleEntities = app.models.PlmNavFlexibleEntities;
 		        var count = flexEntities.length;
@@ -122,12 +123,12 @@ async.waterfall(
 
     	sheet_name_list.forEach(function(y) {
 			if (y !== "FlexibleEntitiesColumns" && y !== "FlexibleEntities") {
-				console.log("Loading "+y);
+				console.log("================ Loading "+y);
 
 				var pickedFlexEntity = lodash.filter(flexEntityColumnsList, 
 					        	{ 'entityName':  y} );
 
-				//console.log(pickedFlexEntity);
+				console.log(pickedFlexEntity);
 				if (pickedFlexEntity.length > 0) {
 
 					var worksheet = workbook.Sheets[y];
@@ -145,10 +146,11 @@ async.waterfall(
 				    flexEntColumnValues.forEach(function(flexEntColumnValueIn) {
 
 				    	Object.keys(flexEntColumnValueIn).forEach(function(key) {
-				    		//console.log('key : '+key);
-				    		//console.log('value : '+flexEntColumnValueIn[key]);
+				    		console.log('key : '+key);
+				    		console.log('value : '+flexEntColumnValueIn[key]);
 				    		var pickedFlexEntityColumn= lodash.filter(pickedFlexEntity, 
 					        	{ 'entityFieldName':  key} );
+				    		console.log('pickedFlexEntityColumn : '+pickedFlexEntityColumn);
 
 				    		flexEntColumnValue[pickedFlexEntityColumn[0].dbColumnName] = flexEntColumnValueIn[key];
 				    	});
