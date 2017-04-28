@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Plmnavhierarchytypes) {
+module.exports = function(Plmhierarchytypes) {
 
 };

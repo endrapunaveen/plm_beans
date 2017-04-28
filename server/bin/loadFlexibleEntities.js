@@ -30,7 +30,7 @@ async.waterfall(
 			    var flexEntities =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
 			    console.log(flexEntities);
 
-			    var PlmNavFlexibleEntities = app.models.PlmNavFlexibleEntities;
+			    var PlmFlexibleEntities = app.models.PlmFlexibleEntities;
 		        var count = flexEntities.length;
 
 			    for (var idx=0; idx < count; idx++) {
@@ -42,7 +42,7 @@ async.waterfall(
 					  lastModifiedAt: new Date()
 					}
 
-					PlmNavFlexibleEntities.create(flexEntity, function(err, flexEntityRecord) {
+					PlmFlexibleEntities.create(flexEntity, function(err, flexEntityRecord) {
 			            if (err) return console.log(err);
 
 			            flexEntitiesList.push({"entityName": flexEntityRecord.entityName,
@@ -74,7 +74,7 @@ async.waterfall(
 			    var groupedFlexEntColumns = lodash.groupBy(flexEntColumns, "entityName");
 			    
 			    // Load FlexibleEntitiesColumns
-			    var PlmNavFlexibleEntitiesColumns = app.models.PlmNavFlexibleEntitiesColumns;
+			    var PlmFlexibleEntitiesColumns = app.models.PlmFlexibleEntitiesColumns;
 			    var count = flexEntColumns.length;
 
 			    Object.keys(groupedFlexEntColumns).forEach(function(key) {
@@ -95,7 +95,7 @@ async.waterfall(
 						  "lastModifiedAt": new Date()
 						}
 
-				       PlmNavFlexibleEntitiesColumns.create(flexEntColumn, function(err, flexEntColumnRecord) {
+				       PlmFlexibleEntitiesColumns.create(flexEntColumn, function(err, flexEntColumnRecord) {
 				        if (err) return console.log(err);
 
 				        count--;
@@ -134,7 +134,7 @@ async.waterfall(
 					var worksheet = workbook.Sheets[y];
 				    var flexEntColumnValues =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
 
-				    var PlmNavFlexibleEntityValues = app.models.PlmNavFlexibleEntityValues;
+				    var PlmFlexibleEntityValues = app.models.PlmFlexibleEntityValues;
 				    var count = flexEntColumnValues.length;
 				    
 				    var flexEntColumnValue = {
@@ -155,7 +155,7 @@ async.waterfall(
 				    		flexEntColumnValue[pickedFlexEntityColumn[0].dbColumnName] = flexEntColumnValueIn[key];
 				    	});
 				    
-				    	PlmNavFlexibleEntityValues.create(flexEntColumnValue, 
+				    	PlmFlexibleEntityValues.create(flexEntColumnValue, 
 				    		function(err, flexEntColumnValueRecord) 
 				    	{
 					        if (err) return console.log(err);

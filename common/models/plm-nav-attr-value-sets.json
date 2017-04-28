@@ -1,5 +1,5 @@
 {
-  "name": "plmNavAttrValueSets",
+  "name": "PlmAttrValueSets",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -26,7 +26,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "values": {
+      "type": "hasMany",
+      "model": "PlmAttrValueSetValues",
+      "foreignKey": "valueSetId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -55,8 +55,8 @@ async.waterfall(
   [
       /*
       function(callback) {
-        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
-        PlmNavHierarchyNodes.destroyAll({}, function(err, info, count) {
+        var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
+        PlmHierarchyNodes.destroyAll({}, function(err, info, count) {
           if (err) {
             callback(err, null);
           } else {
@@ -70,9 +70,9 @@ async.waterfall(
       function(callback) {
         //console.log('2');
 
-        var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
+        var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
 
-        PlmNavHierarchyLevels.find(
+        PlmHierarchyLevels.find(
           { fields: {id: true, hierarchyLevelName: true, hierarchyTypeFkId: true} }, 
         function(err, hierarchyLevels) {
           if (err) {
@@ -82,8 +82,8 @@ async.waterfall(
             var parentHierarchyLevel = lodash.filter(hierarchyLevels, 
                 { 'hierarchyLevelName':  parentHierarchyLevel } );
             
-            var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
-            PlmNavHierarchyNodes.find(
+            var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
+            PlmHierarchyNodes.find(
               {  where: {hierarchyLevelFkId: parentHierarchyLevel.id}, 
                 fields: {id: true, uniqueKey: true} 
               }, 
@@ -106,12 +106,12 @@ async.waterfall(
         connectionSettings.connectTimeout = 60000 * 3;
         var conn = mysql.createConnection(dataSource.settings);
 
-        var sql = "INSERT into PlmNavHierarchyNodes (hierarchyName, uniqueKey, parentHierarchyId, hierarchyTypeFkId, hierarchyLevelFkId, createdAt, lastModifiedAt) VALUES ?";
+        var sql = "INSERT into PlmHierarchyNodes (hierarchyName, uniqueKey, parentHierarchyId, hierarchyTypeFkId, hierarchyLevelFkId, createdAt, lastModifiedAt) VALUES ?";
         var values = [];
 
         //////////
 
-        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
+        var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
         var totalCount = hierarchyNodes.length;
 
         var hierarchyNodesBatches = createGroupedArray(hierarchyNodes, 100);

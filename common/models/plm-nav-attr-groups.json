@@ -1,5 +1,5 @@
 {
-  "name": "PlmNavAttrGroups",
+  "name": "PlmAttrGroups",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -14,7 +14,7 @@
       "type": "string",
       "required": true
     },
-    "attGroupBehaviour": {
+    "attrGroupBehaviour": {
       "type": "string",
       "required": true,
       "enum": [
@@ -48,8 +48,27 @@
       "type": "number"
     }
   },
+
+  "relations": {
+    "attributes": {
+      "type": "hasMany",
+      "model": "PlmAttributes",
+      "foreignKey": "attrGroupId"
+    },
+    "hierarchies": {
+      "type": "hasMany",
+      "model": "PlmHierarchyNodes",
+      "foreignKey": "attrGroupId",
+      "through": "PlmHierarchyAgAssoc"
+    },
+    "attrGroupHierarchies": {
+      "type": "hasAndBelongsToMany",
+      "model": "PlmHierarchyNodes"
+    }
+  },
+
   "validations": [],
-  "relations": {},
+  
   "acls": [],
   "methods": {}
 }

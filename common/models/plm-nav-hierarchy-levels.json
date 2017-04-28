@@ -1,5 +1,5 @@
 {
-  "name": "PlmNavHierarchyLevels",
+  "name": "PlmHierarchyLevels",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -34,7 +34,15 @@
     }
   },
   "validations": [],
-  "relations": {},
+  
+  "relations": {
+    "hierarchyNodes": {
+      "type": "hasMany",
+      "model": "PlmHierarchyNodes",
+      "foreignKey": "hierarchyLevelFkId"
+    }
+  },
+
   "acls": [],
   "methods": {}
 }

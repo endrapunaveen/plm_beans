@@ -19,13 +19,13 @@ var hierarchyTypes = [
 // this loads the plmdev configuration in ~/server/datasources.json
 var dataSource = app.dataSources.plmdev;
  
-// this loads the PlmNavHierarchyTypes model from ~/common/models/PlmNavHierarchyTypes.json
-var PlmNavHierarchyTypes = app.models.PlmNavHierarchyTypes;
+// this loads the PlmHierarchyTypes model from ~/common/models/PlmHierarchyTypes.json
+var PlmHierarchyTypes = app.models.PlmHierarchyTypes;
 var count = hierarchyTypes.length;
 
 hierarchyTypes.forEach(function(hierarchyType) {
-   // insert new records into the PlmNavHierarchyTypes table
-   PlmNavHierarchyTypes.create(hierarchyType, function(err, hierarchyTypeRecord) {
+   // insert new records into the PlmHierarchyTypes table
+   PlmHierarchyTypes.create(hierarchyType, function(err, hierarchyTypeRecord) {
     if (err) return console.log(err);
 
     // console.log('Record created:', hierarchyTypeRecord);

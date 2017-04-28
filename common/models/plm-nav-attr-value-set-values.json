@@ -1,5 +1,5 @@
 {
-  "name": "plmNavAttrValueSetValues",
+  "name": "PlmAttrValueSetValues",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

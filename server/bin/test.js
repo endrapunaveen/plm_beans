@@ -1,31 +1,31 @@
 var async = require("async");
 var sleep = require('sleep');
+var _ = require('lodash')
 
-var hashtag = [1, 2, 3];
 
-
-/*
-async.whilst(
-    function () { return 0 == 0 },
-    function (callback) {
-        async.eachSeries(hashtag, searchTwitter, callback);
+var resArray = [
+    {
+      "id": 8526,
+      "hierarchyName": "Tesco Product Catalogue",
+      "parentHierarchyId": null
     },
-    function (err) {
+    {
+      "id": 8539,
+      "hierarchyName": "Food/Beverage/Tobacco",
+      "parentHierarchyId": 8526
+    },
+    {
+      "id": 8595,
+      "hierarchyName": "Beverages",
+      "parentHierarchyId": 8539
+    },
+    {
+      "id": 8847,
+      "hierarchyName": "Alcoholic Beverages",
+      "parentHierarchyId": 8595
     }
-);
-*/
+  ]
 
-async.eachSeries(hashtag, searchTwitter, function() {
+  var list =  _.map(resArray,"id");
 
-});
-
-function searchTwitter(tag, done) {
-	console.log('++++ start of : ' + tag);
-    sleep.sleep(1); 
-    console.log('++++ end of : ' + tag);
-    done()
-}
-
-
-
-        
+  console.log(list);

@@ -32,47 +32,51 @@
     "dataSource": "db",
     "public": false
   },
-  "PlmNavHierarchyTypes": {
+  "PlmHierarchyTypes": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavHierarchyLevels": {
+  "PlmHierarchyLevels": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavHierarchyNodes": {
+  "PlmHierarchyNodes": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavAttrGroups": {
+  "PlmAttrGroups": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavAttributes": {
+  "PlmAttributes": {
     "dataSource": "plmdev",
     "public": true
   },
-  "plmNavAttrValueSets": {
+  "PlmAttrValueSets": {
     "dataSource": "plmdev",
     "public": true
   },
-  "plmNavAttrValueSetValues": {
+  "PlmAttrValueSetValues": {
     "dataSource": "plmdev",
     "public": true
   },
-  "plmNavHierarchyAgAssoc": {
+  "PlmHierarchyAgAssoc": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavFlexibleEntities": {
+  "PlmFlexibleEntities": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavFlexibleEntitiesColumns": {
+  "PlmFlexibleEntitiesColumns": {
     "dataSource": "plmdev",
     "public": true
   },
-  "PlmNavFlexibleEntityValues": {
+  "PlmFlexibleEntityValues": {
+    "dataSource": "plmdev",
+    "public": true
+  },
+  "plmProductEntity": {
     "dataSource": "plmdev",
     "public": true
   }

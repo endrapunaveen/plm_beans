@@ -6,3 +6,14 @@ module.exports = function(server) {
   router.get('/', server.loopback.status());
   server.use(router);
 };
+
+
+module.exports = function(app) {
+	var router = app.loopback.Router();
+  
+	app.get('/productMetadata', function(req, res) {
+		res.send('pong');
+	});
+	
+	app.use(router);
+}

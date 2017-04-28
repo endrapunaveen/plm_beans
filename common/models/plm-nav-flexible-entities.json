@@ -1,5 +1,5 @@
 {
-  "name": "PlmNavFlexibleEntities",
+  "name": "PlmFlexibleEntities",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

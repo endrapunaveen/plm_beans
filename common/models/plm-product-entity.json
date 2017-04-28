@@ -1,0 +1,74 @@
+{
+  "name": "plmProductEntity",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "productId": {
+      "type": "number",
+      "required": true
+    },
+    "categoryId": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Active",
+        "Draft",
+        "Pre-Numbering"
+      ]
+    },
+    "version": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "isOwnLabel": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "brand": {
+      "type": "number",
+      "required": true
+    },
+    "sellByType": {
+      "type": "number"
+    },
+    "promotionType": {
+      "type": "number"
+    },
+    "isSellable": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "isOrderable": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

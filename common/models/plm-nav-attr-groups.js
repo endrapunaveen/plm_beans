@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Plmnavattrgroups) {
+module.exports = function(Plmattrgroups) {
 
 };

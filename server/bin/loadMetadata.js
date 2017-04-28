@@ -20,18 +20,18 @@ var count=0;
 var dataSource = app.dataSources.plmdev;
 
 createAGAndHierarchyAssoc = function(attributeGroup, callback) {
-	var PlmNavAttrGroups = app.models.PlmNavAttrGroups;
-	var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;	
-	var PlmNavHierarchyAgAssoc = app.models.PlmNavHierarchyAgAssoc;
+	var PlmAttrGroups = app.models.PlmAttrGroups;
+	var PlmHierarchyNodes = app.models.PlmHierarchyNodes;	
+	var PlmHierarchyAgAssoc = app.models.PlmHierarchyAgAssoc;
 	
-PlmNavAttrGroups.create(attributeGroup, function(err, attributeGroupRecord) {
+PlmAttrGroups.create(attributeGroup, function(err, attributeGroupRecord) {
     if (err) return console.log(err);
 
     attributeGroups.push({"attrGroupIntName": attributeGroupRecord.attrGroupIntName,
     	"id": attributeGroupRecord.id
 	});
 
-    PlmNavHierarchyNodes.find(
+    PlmHierarchyNodes.find(
       { where: { hierarchyName: attributeGroup.categoryName }, 
       	fields: {id: true, hierarchyName: true} 
       }, 
@@ -45,7 +45,7 @@ PlmNavAttrGroups.create(attributeGroup, function(err, attributeGroupRecord) {
 		  createdAt: new Date(),
 		  lastModifiedAt: new Date()
 		}
-        PlmNavHierarchyAgAssoc.create(agHierarchyAssoc, function(err, agHierarchyAssocRecord){
+        PlmHierarchyAgAssoc.create(agHierarchyAssoc, function(err, agHierarchyAssocRecord){
         	if (err) return console.log(err);
 
         	count--;
@@ -89,21 +89,21 @@ async.waterfall(
 			  	var worksheet = workbook.Sheets[y];
 			    var ags =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
 
-			    var attGroupBehaviour = '';
-			    var PlmNavAttrGroups = app.models.PlmNavAttrGroups;
+			    var attrGroupBehaviour = '';
+			    var PlmAttrGroups = app.models.PlmAttrGroups;
 		        count = ags.length;
 
-		        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
-		        var PlmNavHierarchyAgAssoc = app.models.PlmNavHierarchyAgAssoc;
+		        var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
+		        var PlmHierarchyAgAssoc = app.models.PlmHierarchyAgAssoc;
 
 			    for (var idx=0; idx < count; idx++) {
-			    	attGroupBehaviour = ags[idx]["Multi-Row?"]=="Yes" ? "Multi Row" : "Single Row";
+			    	attrGroupBehaviour = ags[idx]["Multi-Row?"]=="Yes" ? "Multi Row" : "Single Row";
 
 					var attributeGroup = {
 					  "categoryName": ags[idx]["Category Name"] ,
 					  "attrGroupDispName": ags[idx]["Display Name"],
 					  "attrGroupIntName": ags[idx]["Internal Name"],
-					  "attGroupBehaviour": attGroupBehaviour,
+					  "attrGroupBehaviour": attrGroupBehaviour,
 					  createdAt: new Date(),
 					  lastModifiedAt: new Date()
 					}
@@ -130,7 +130,7 @@ async.waterfall(
 
 			    var count = vaueSetNames.length;
 
-				var plmNavAttrValueSets = app.models.plmNavAttrValueSets;
+				var PlmAttrValueSets = app.models.PlmAttrValueSets;
 
 				for (var vsIdx=0; vsIdx < count; vsIdx++) {
 					var valueSet = {
@@ -139,7 +139,7 @@ async.waterfall(
 					  "lastModifiedAt": new Date(),
 					};
 
-					plmNavAttrValueSets.create(valueSet, function(err, valueSetRecord) {
+					PlmAttrValueSets.create(valueSet, function(err, valueSetRecord) {
 			            if (err) return console.log(err);
 
 			            count--;
@@ -162,7 +162,7 @@ async.waterfall(
     function(valueSetsList, valueSetValuesList, attributeGroupsList, callback) {
     	console.log('Loading valueSet Values')
     	// Load Value Set Values
-	    var plmNavAttrValueSetValues = app.models.plmNavAttrValueSetValues;
+	    var PlmAttrValueSetValues = app.models.PlmAttrValueSetValues;
 	    var count = valueSetValuesList.length;
 	    console.log("Total value set values : "+count);
 
@@ -180,7 +180,7 @@ async.waterfall(
 			  "lastModifiedAt": new Date()
 			};
 
-	       plmNavAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
+	       PlmAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
 	        if (err) return console.log(err);
 
 	        count--;
@@ -206,7 +206,7 @@ async.waterfall(
 			    var values;
 
 			    // Load Attributes
-			    var PlmNavAttributes = app.models.PlmNavAttributes;
+			    var PlmAttributes = app.models.PlmAttributes;
 			    var count = attributes.length;
 			    var valueSetId;
 
@@ -240,7 +240,7 @@ async.waterfall(
 						  "lastModifiedAt": new Date()
 						}
 
-				       PlmNavAttributes.create(attribute, function(err, attributeRecord) {
+				       PlmAttributes.create(attribute, function(err, attributeRecord) {
 				        if (err) return console.log(err);
 
 				        count--;
@@ -260,7 +260,7 @@ async.waterfall(
 
     	/*
     	// Load Value Set Values
-	    var plmNavAttrValueSetValues = app.models.plmNavAttrValueSetValues;
+	    var PlmAttrValueSetValues = app.models.PlmAttrValueSetValues;
 	    var count = valueSetValuesList.length;
 
 	    valueSetValuesList.forEach(function(valueSetValueIn) {
@@ -280,7 +280,7 @@ async.waterfall(
 			console.log(valueSetValue);
 
 	       // insert new records into the Account table
-	       plmNavAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
+	       PlmAttrValueSetValues.create(valueSetValue, function(err, valueSetValue) {
 	        if (err) return console.log(err);
 
 	        count--;

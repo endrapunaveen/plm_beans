@@ -1,5 +1,5 @@
 {
-  "name": "PlmNavHierarchyNodes",
+  "name": "PlmHierarchyNodes",
   "base": "PersistedModel",
   "idInjection": true,
   "indexes": {
@@ -54,7 +54,26 @@
     }
   },
   "validations": [],
-  "relations": {},
+  
+  "relations": {
+    "attributeGroups": {
+      "type": "hasMany",
+      "model": "PlmAttrGroups",
+      "foreignKey": "hierarchyNodeId",
+      "through": "PlmHierarchyAgAssoc"
+    },
+    "associations": {
+      "type": "hasMany",
+      "model": "PlmHierarchyAgAssoc",
+      "foreignKey": "hierarchyNodeId"
+    },
+    "parentHierarchy": {
+      "type": "belongsTo",
+      "model": "PlmHierarchyNodes",
+      "foreignKey": "parentHierarchyId"
+    }
+  },
+
   "acls": [],
   "methods": {}
 }

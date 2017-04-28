@@ -1,30 +1,30 @@
 var app = require('../server');
 
-var PlmNavHierarchyLevelsModel = require('../../common/models/plm-nav-hierarchy-levels.json');
-var PlmNavHierarchyTypesModel = require('../../common/models/plm-nav-hierarchy-types.json');
-var PlmNavHierarchyNodesModel = require('../../common/models/plm-nav-hierarchy-nodes.json');
-var PlmNavAttrValueSetValuesModel = require('../../common/models/plm-nav-attr-value-sets.json');
-var PlmNavAttrValueSetsModel = require('../../common/models/plm-nav-attr-value-set-values.json');
-var PlmNavAttrGroupsModel = require('../../common/models/plm-nav-attr-groups.json');
-var PlmNavAttributesModel = require('../../common/models/plm-nav-attributes.json');
+var PlmHierarchyLevelsModel = require('../../common/models/plm-nav-hierarchy-levels.json');
+var PlmHierarchyTypesModel = require('../../common/models/plm-nav-hierarchy-types.json');
+var PlmHierarchyNodesModel = require('../../common/models/plm-nav-hierarchy-nodes.json');
+var PlmAttrValueSetValuesModel = require('../../common/models/plm-nav-attr-value-sets.json');
+var PlmAttrValueSetsModel = require('../../common/models/plm-nav-attr-value-set-values.json');
+var PlmAttrGroupsModel = require('../../common/models/plm-nav-attr-groups.json');
+var PlmAttributesModel = require('../../common/models/plm-nav-attributes.json');
 
-var PlmNavFlexibleEntitiesModel = require('../../common/models/plm-nav-flexible-entities.json');
-var PlmNavFlexibleEntitiesColumnsModel = require('../../common/models/plm-nav-flexible-entities-columns.json');
-var PlmNavFlexibleEntityValuesModel = require('../../common/models/plm-nav-flexible-entity-values.json');
-var PlmNavHierarchyAgAssocModel = require('../../common/models/plm-nav-hierarchy-ag-assoc.json');
+var PlmFlexibleEntitiesModel = require('../../common/models/plm-nav-flexible-entities.json');
+var PlmFlexibleEntitiesColumnsModel = require('../../common/models/plm-nav-flexible-entities-columns.json');
+var PlmFlexibleEntityValuesModel = require('../../common/models/plm-nav-flexible-entity-values.json');
+var PlmHierarchyAgAssocModel = require('../../common/models/plm-nav-hierarchy-ag-assoc.json');
 
 var listOfModels = [
-	{"modelName": 'PlmNavHierarchyLevels', "model": PlmNavHierarchyLevelsModel},
-	{"modelName": 'PlmNavHierarchyTypes', "model": PlmNavHierarchyTypesModel},
-	{"modelName": 'PlmNavHierarchyNodes', "model": PlmNavHierarchyNodesModel},
-	{"modelName": 'PlmNavAttrValueSetValues', "model": PlmNavAttrValueSetValuesModel},
-	{"modelName": 'PlmNavAttrValueSets', "model": PlmNavAttrValueSetsModel},
-	{"modelName": 'PlmNavAttrGroups', "model": PlmNavAttrGroupsModel},
-	{"modelName": "PlmNavHierarchyAgAssoc", "model": PlmNavHierarchyAgAssocModel},
-	{"modelName": 'PlmNavAttributes', "model": PlmNavAttributesModel},
-	{"modelName": 'PlmNavFlexibleEntities', "model": PlmNavFlexibleEntitiesModel},
-	{"modelName": 'PlmNavFlexibleEntitiesColumns', "model": PlmNavFlexibleEntitiesColumnsModel},
-	{"modelName": 'PlmNavFlexibleEntityValues', "model": PlmNavFlexibleEntityValuesModel},
+	{"modelName": 'PlmHierarchyLevels', "model": PlmHierarchyLevelsModel},
+	{"modelName": 'PlmHierarchyTypes', "model": PlmHierarchyTypesModel},
+	{"modelName": 'PlmHierarchyNodes', "model": PlmHierarchyNodesModel},
+	{"modelName": 'PlmAttrValueSetValues', "model": PlmAttrValueSetValuesModel},
+	{"modelName": 'PlmAttrValueSets', "model": PlmAttrValueSetsModel},
+	{"modelName": 'PlmAttrGroups', "model": PlmAttrGroupsModel},
+	{"modelName": "PlmHierarchyAgAssoc", "model": PlmHierarchyAgAssocModel},
+	{"modelName": 'PlmAttributes', "model": PlmAttributesModel},
+	{"modelName": 'PlmFlexibleEntities', "model": PlmFlexibleEntitiesModel},
+	{"modelName": 'PlmFlexibleEntitiesColumns', "model": PlmFlexibleEntitiesColumnsModel},
+	{"modelName": 'PlmFlexibleEntityValues', "model": PlmFlexibleEntityValuesModel},
 ];
 
 var totalModels = listOfModels.length;

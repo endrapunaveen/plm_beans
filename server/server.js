@@ -1,5 +1,7 @@
 'use strict';
 
+//var explorer = require('loopback-component-explorer');
+
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
@@ -12,7 +14,7 @@ app.start = function() {
     var baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);
     if (app.get('loopback-component-explorer')) {
-      var explorerPath = app.get('loopback-component-explorer').mountPath;
+      var explorerPath = app.get('loopback-component-explorer').uiDirs; //.mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
   });
@@ -27,3 +29,5 @@ boot(app, __dirname, function(err) {
   if (require.main === module)
     app.start();
 });
+
+//app.use('/explorer',explorer.routes(app, { uiDirs: path.resolve(__dirname, 'explorer') }));

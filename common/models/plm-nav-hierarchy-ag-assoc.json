@@ -1,5 +1,5 @@
 {
-  "name": "plmNavHierarchyAgAssoc",
+  "name": "PlmHierarchyAgAssoc",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -30,7 +30,25 @@
     }
   },
   "validations": [],
-  "relations": {},
+  
+  "relations": {
+    "attributeGroups1": {
+      "type": "hasMany",
+      "model": "PlmAttrGroups",
+      "foreignKey": "id"
+    },
+    "attributeGroup": {
+      "type": "belongsTo",
+      "model": "PlmAttrGroups",
+      "foreignKey": "attrGroupId"
+    },
+    "hierarchy": {
+      "type": "belongsTo",
+      "model": "PlmHierarchyNodes",
+      "foreignKey": "hierarchyNodeId"
+    }
+  },
+
   "acls": [],
   "methods": {}
 }

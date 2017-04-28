@@ -23,16 +23,16 @@ var hierarchyNodeIds = [];
 // this loads the plmdev configuration in ~/server/datasources.json
 var dataSource = app.dataSources.plmdev;
  
-// this automigrates the PlmNavHierarchyTypes model 
-dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
+// this automigrates the PlmHierarchyTypes model 
+dataSource.automigrate('PlmHierarchyTypes', function(err) {
   if (err) throw err;
  
-  // this loads the PlmNavHierarchyTypes model from ~/common/models/PlmNavHierarchyTypes.json
-  var PlmNavHierarchyTypes = app.models.PlmNavHierarchyTypes;
+  // this loads the PlmHierarchyTypes model from ~/common/models/PlmHierarchyTypes.json
+  var PlmHierarchyTypes = app.models.PlmHierarchyTypes;
   var count = hierarchyTypes.length;
   hierarchyTypes.forEach(function(hierarchyType) {
-     // insert new records into the PlmNavHierarchyTypes table
-     PlmNavHierarchyTypes.create(hierarchyType, function(err, hierarchyTypeRecord) {
+     // insert new records into the PlmHierarchyTypes table
+     PlmHierarchyTypes.create(hierarchyType, function(err, hierarchyTypeRecord) {
       if (err) return console.log(err);
  
       console.log('Record created:', hierarchyTypeRecord);
@@ -117,12 +117,12 @@ dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
           }
         ];
 
-        // this automigrates the PlmNavHierarchyLevels model 
-        dataSource.automigrate('PlmNavHierarchyLevels', function(err) {
+        // this automigrates the PlmHierarchyLevels model 
+        dataSource.automigrate('PlmHierarchyLevels', function(err) {
           if (err) throw err;
          
-          // this loads the PlmNavHierarchyLevels model from ~/common/models/PlmNavHierarchyLevels.json
-          var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
+          // this loads the PlmHierarchyLevels model from ~/common/models/PlmHierarchyLevels.json
+          var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
           var count = hierarchyLevels.length;
           hierarchyLevels.forEach(function(hierarchyLevel) {
             var pickedHierarchyType = lodash.filter(hierarchyTypeIds, 
@@ -135,7 +135,7 @@ dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
             hierarchyLevel.hierarchyTypeFkId = pickedHierarchyType[0].id;
 
              // insert new records into the Account table
-             PlmNavHierarchyLevels.create(hierarchyLevel, function(err, hierarchyLevelRecord) {
+             PlmHierarchyLevels.create(hierarchyLevel, function(err, hierarchyLevelRecord) {
               if (err) return console.log(err);
          
               console.log('Record created:', hierarchyLevelRecord);
@@ -173,12 +173,12 @@ dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
                 ];
                 */
 
-                // this automigrates the PlmNavHierarchyNodes model 
-                dataSource.automigrate('PlmNavHierarchyNodes', function(err) {
+                // this automigrates the PlmHierarchyNodes model 
+                dataSource.automigrate('PlmHierarchyNodes', function(err) {
                   if (err) throw err;
                  
-                  // this loads the PlmNavHierarchyNodes model from ~/common/models/PlmNavHierarchyNodes.json
-                  var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
+                  // this loads the PlmHierarchyNodes model from ~/common/models/PlmHierarchyNodes.json
+                  var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
                   var count = hierarchyNodes.length;
 
                   hierarchyNodes.forEach(function(hierarchyNode) {
@@ -202,7 +202,7 @@ dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
                     }
 
                     // insert new records into the Account table
-                    PlmNavHierarchyNodes.create(hierarchyNode, function(err, record) {
+                    PlmHierarchyNodes.create(hierarchyNode, function(err, record) {
                       if (err) return console.log(err);
                  
                       console.log('Record created:', record);
@@ -233,16 +233,16 @@ dataSource.automigrate('PlmNavHierarchyTypes', function(err) {
 
 
 /*
-// this automigrates the PlmNavHierarchyLevels model 
-dataSource.automigrate('PlmNavHierarchyLevels', function(err) {
+// this automigrates the PlmHierarchyLevels model 
+dataSource.automigrate('PlmHierarchyLevels', function(err) {
   if (err) throw err;
  
-  // this loads the PlmNavHierarchyLevels model from ~/common/models/PlmNavHierarchyLevels.json
-  var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
+  // this loads the PlmHierarchyLevels model from ~/common/models/PlmHierarchyLevels.json
+  var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
   var count = hierarchyLevels.length;
   hierarchyLevels.forEach(function(hierarchyLevel) {
      // insert new records into the Account table
-     PlmNavHierarchyLevels.create(hierarchyLevel, function(err, record) {
+     PlmHierarchyLevels.create(hierarchyLevel, function(err, record) {
       if (err) return console.log(err);
  
       console.log('Record created:', record);
@@ -259,16 +259,16 @@ dataSource.automigrate('PlmNavHierarchyLevels', function(err) {
 */
 
 /*
-// this automigrates the PlmNavHierarchyNodes model 
-dataSource.automigrate('PlmNavHierarchyNodes', function(err) {
+// this automigrates the PlmHierarchyNodes model 
+dataSource.automigrate('PlmHierarchyNodes', function(err) {
   if (err) throw err;
  
-  // this loads the PlmNavHierarchyNodes model from ~/common/models/PlmNavHierarchyNodes.json
-  var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
+  // this loads the PlmHierarchyNodes model from ~/common/models/PlmHierarchyNodes.json
+  var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
   var count = hierarchyNodes.length;
   hierarchyNodes.forEach(function(hierarchyNode) {
      // insert new records into the Account table
-     PlmNavHierarchyNodes.create(hierarchyNode, function(err, record) {
+     PlmHierarchyNodes.create(hierarchyNode, function(err, record) {
       if (err) return console.log(err);
  
       console.log('Record created:', record);

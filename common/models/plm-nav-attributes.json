@@ -1,5 +1,5 @@
 {
-  "name": "PlmNavAttributes",
+  "name": "PlmAttributes",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -94,7 +94,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "valueSets": {
+      "type": "belongsTo",
+      "model": "PlmAttrValueSets",
+      "foreignKey": "valueSetId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

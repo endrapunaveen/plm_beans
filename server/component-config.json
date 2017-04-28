@@ -1,5 +1,10 @@
 {
   "loopback-component-explorer": {
-    "mountPath": "/explorer"
+    "mountPath": "/explorer",
+    "uiDirs": "explorer",
+    "apiInfo": {
+      "title": "PLM API Explorer",
+      "description": "List of APIs for Product Lifecycle Management"
+    }
   }
 }

@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Plmnavattributes) {
+module.exports = function(Plmattributes) {
 
 };

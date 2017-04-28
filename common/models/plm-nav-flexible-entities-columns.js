@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Plmnavflexibleentitiescolumns) {
+module.exports = function(Plmflexibleentitiescolumns) {
 
 };

@@ -81,8 +81,8 @@ var hierarchyLevels = [
 async.waterfall(
   [
       function(callback) {
-        var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
-        PlmNavHierarchyLevels.destroyAll({}, function(err, info, count) {
+        var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
+        PlmHierarchyLevels.destroyAll({}, function(err, info, count) {
           if (err) {
             //return console.log(err);
             callback(err, null);
@@ -94,8 +94,8 @@ async.waterfall(
       },
       function(callback) {
         
-        var PlmNavHierarchyTypes = app.models.PlmNavHierarchyTypes;
-        PlmNavHierarchyTypes.find(
+        var PlmHierarchyTypes = app.models.PlmHierarchyTypes;
+        PlmHierarchyTypes.find(
           { fields: {id: true, hierarchyType: true, isAttributeHierarchy: true} }, 
         function(err, hierarchyTypes) {
           if (err) {
@@ -109,8 +109,8 @@ async.waterfall(
       },
       function(hierarchyTypesList, callback) {
 
-        // this loads the PlmNavHierarchyLevels model from ~/common/models/PlmNavHierarchyLevels.json
-        var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
+        // this loads the PlmHierarchyLevels model from ~/common/models/PlmHierarchyLevels.json
+        var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
 
         var count = hierarchyLevels.length;
 
@@ -121,7 +121,7 @@ async.waterfall(
           hierarchyLevel.hierarchyTypeFkId = pickedHierarchyType[0].id;
 
            // insert new records into the Account table
-           PlmNavHierarchyLevels.create(hierarchyLevel, function(err, hierarchyLevelRecord) {
+           PlmHierarchyLevels.create(hierarchyLevel, function(err, hierarchyLevelRecord) {
             if (err) return console.log(err);
 
             count--;

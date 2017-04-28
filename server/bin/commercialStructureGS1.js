@@ -64,9 +64,9 @@ function processCategoryNodes(key, next) {
   async.waterfall(
   [
       function(callback) {
-        var PlmNavHierarchyLevels = app.models.PlmNavHierarchyLevels;
+        var PlmHierarchyLevels = app.models.PlmHierarchyLevels;
 
-        PlmNavHierarchyLevels.find(
+        PlmHierarchyLevels.find(
           { fields: {id: true, hierarchyLevelName: true, hierarchyTypeFkId: true} }, 
         function(err, hierarchyLevels) {
           if (err) {
@@ -83,8 +83,8 @@ function processCategoryNodes(key, next) {
         var parentHierarchyLevel = lodash.filter(hierarchyLevelsList, 
               { 'hierarchyLevelName':  previousCategoryLevel } );
         
-        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
-        PlmNavHierarchyNodes.find(
+        var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
+        PlmHierarchyNodes.find(
           {  where: {hierarchyLevelFkId: parentHierarchyLevel[0].id}, 
             fields: {id: true, hierarchyName: true, } 
           }, 
@@ -102,10 +102,10 @@ function processCategoryNodes(key, next) {
         connectionSettings.connectTimeout = 60000 * 3;
         var conn = mysql.createConnection(dataSource.settings);
 
-        var sql = "INSERT into PlmNavHierarchyNodes (hierarchyName, uniqueKey, parentHierarchyId, hierarchyTypeFkId, hierarchyLevelFkId, createdAt, lastModifiedAt) VALUES ?";
+        var sql = "INSERT into PlmHierarchyNodes (hierarchyName, uniqueKey, parentHierarchyId, hierarchyTypeFkId, hierarchyLevelFkId, createdAt, lastModifiedAt) VALUES ?";
         var values = [];
 
-        var PlmNavHierarchyNodes = app.models.PlmNavHierarchyNodes;
+        var PlmHierarchyNodes = app.models.PlmHierarchyNodes;
         var totalCount = categories.length;
 
         var hierarchyNodesBatches = createGroupedArray(categories, 100);
