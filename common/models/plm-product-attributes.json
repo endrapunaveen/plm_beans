@@ -1,0 +1,156 @@
+{
+  "name": "plmProductAttributes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "productId": {
+      "type": "number",
+      "required": true
+    },
+    "attrGroupId": {
+      "type": "number",
+      "required": true
+    },
+    "string1": {
+      "type": "string",
+      "required": false
+    },
+    "string2": {
+      "type": "string",
+      "required": false
+    },
+    "string3": {
+      "type": "string",
+      "required": false
+    },
+    "string4": {
+      "type": "string",
+      "required": false
+    },
+    "string5": {
+      "type": "string",
+      "required": false
+    },
+    "string6": {
+      "type": "string",
+      "required": false
+    },
+    "string7": {
+      "type": "string",
+      "required": false
+    },
+    "string8": {
+      "type": "string",
+      "required": false
+    },
+    "string9": {
+      "type": "string",
+      "required": false
+    },
+    "string10": {
+      "type": "string",
+      "required": false
+    },
+    "number1": {
+      "type": "number",
+      "required": false
+    },
+    "number2": {
+      "type": "number",
+      "required": false
+    },
+    "number3": {
+      "type": "number",
+      "required": false
+    },
+    "number4": {
+      "type": "number",
+      "required": false
+    },
+    "number5": {
+      "type": "number",
+      "required": false
+    },
+    "number6": {
+      "type": "number",
+      "required": false
+    },
+    "number7": {
+      "type": "number",
+      "required": false
+    },
+    "number8": {
+      "type": "number",
+      "required": false
+    },
+    "number9": {
+      "type": "number",
+      "required": false
+    },
+    "number10": {
+      "type": "number",
+      "required": false
+    },
+    "date1": {
+      "type": "date",
+      "required": false
+    },
+    "date2": {
+      "type": "date",
+      "required": false
+    },
+    "date3": {
+      "type": "date",
+      "required": false
+    },
+    "date4": {
+      "type": "date",
+      "required": false
+    },
+    "date5": {
+      "type": "date",
+      "required": false
+    },
+    "date6": {
+      "type": "date",
+      "required": false
+    },
+    "date7": {
+      "type": "date",
+      "required": false
+    },
+    "date8": {
+      "type": "date",
+      "required": false
+    },
+    "date9": {
+      "type": "date",
+      "required": false
+    },
+    "date10": {
+      "type": "date",
+      "required": false
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "lastModifiedAt": {
+      "type": "date",
+      "required": true
+    },
+    "createdBy": {
+      "type": "number"
+    },
+    "lastModifiedBy": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

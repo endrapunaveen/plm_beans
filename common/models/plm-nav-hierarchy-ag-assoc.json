@@ -30,7 +30,6 @@
     }
   },
   "validations": [],
-  
   "relations": {
     "attributeGroups1": {
       "type": "hasMany",
@@ -48,7 +47,6 @@
       "foreignKey": "hierarchyNodeId"
     }
   },
-
   "acls": [],
   "methods": {}
 }

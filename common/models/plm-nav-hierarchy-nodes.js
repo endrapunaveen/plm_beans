@@ -22,8 +22,6 @@ module.exports = function(Plmhierarchynodes) {
 			cb(null, hierarchyNode);
 			 
 		});
-  		
-		
 	}
 
 	Plmhierarchynodes.remoteMethod('getMetadata', {

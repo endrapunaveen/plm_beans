@@ -1,12 +1,17 @@
 'use strict';
 
 var _ = require('lodash');
+const util = require('util')
 
 module.exports = function(Plmhierarchyagassoc) {
+
+	
+
 	Plmhierarchyagassoc.getMetadata = function(name, cb) {
   		
 		var app = require('../../server/server');
 		var dataSource = app.dataSources.plmdev;
+
 
 		var sql = "SELECT T2.id, T2.hierarchyName, T2.parentHierarchyId \n "+
 				"	FROM (\n "+
@@ -23,13 +28,10 @@ module.exports = function(Plmhierarchyagassoc) {
 				"	ON T1._id = T2.id \n "+
 				"	ORDER BY T1.lvl ASC; \n ";
 		
-		console.log(name + " ++++++ " + sql);
-		
 		dataSource.connector.execute(sql, [], function(err, results){
 			if(err) return callback(err);
 		   	
 		   	var hierarchyIds = _.map(results,"id");
-		   	console.log(hierarchyIds);
 		   	
 			Plmhierarchyagassoc.find( {where : {hierarchyNodeId : {inq: hierarchyIds}}, 
 				//{where: {hierarchyNodeId: id},
@@ -45,6 +47,7 @@ module.exports = function(Plmhierarchyagassoc) {
 							"scope": {
 								"fields" : ["id", "attrIntName", "attrDispName", "valueSetId", "dbColumnName", "uniqueKeyFlag", "requiredFlag"],
 								"order": "id ASC",
+								
 								"include" : {
 									"relation" : "valueSets",
 									"scope" :	 {
@@ -63,24 +66,23 @@ module.exports = function(Plmhierarchyagassoc) {
 						}
 					}
 				}
-				//include: [{"attributeGroup": 
-				//	{"attributes": {"valueSets": "values" }}}]
-			}, function(err, metadata) {
-				var outMeatadata = {"hierarchyName" : name,
+			}, function(err, agAssocs) {
+
+				const result = _.map(JSON.parse(JSON.stringify(agAssocs)), "attributeGroup");
+				
+				var outMetadata = {"hierarchyName" : name,
 									"hierarchyId": hierarchyIds[0],
-									"attributeGroups" : metadata
+									"attributeGroups" : result
 								};
-			
-				console.log(outMeatadata);
-				 //return only the location property of the 
-		    	cb(null, outMeatadata);
+
+		    	cb(null, outMetadata);
 			});
 		})
 	}
 
 	Plmhierarchyagassoc.remoteMethod('getMetadata', {
 		description:"List Metadata. Include the related Attribute Groups and Attributes information",
-		returns: {arg: 'metadta', type: 'object'},
+		returns: {arg: 'metadata', type: 'object'},
 		accepts: {arg: 'name', type: 'string', required: true},
 		          http: {path:'/:name/metadata', verb: 'get'}
 	});

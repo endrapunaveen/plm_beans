@@ -13,6 +13,9 @@ var PlmFlexibleEntitiesColumnsModel = require('../../common/models/plm-nav-flexi
 var PlmFlexibleEntityValuesModel = require('../../common/models/plm-nav-flexible-entity-values.json');
 var PlmHierarchyAgAssocModel = require('../../common/models/plm-nav-hierarchy-ag-assoc.json');
 
+var plmProductEntityModel = require('../../common/models/plm-product-entity.json');
+var plmProductAttributesModel = require('../../common/models/plm-product-attributes.json');
+
 var listOfModels = [
 	{"modelName": 'PlmHierarchyLevels', "model": PlmHierarchyLevelsModel},
 	{"modelName": 'PlmHierarchyTypes', "model": PlmHierarchyTypesModel},
@@ -25,6 +28,8 @@ var listOfModels = [
 	{"modelName": 'PlmFlexibleEntities', "model": PlmFlexibleEntitiesModel},
 	{"modelName": 'PlmFlexibleEntitiesColumns', "model": PlmFlexibleEntitiesColumnsModel},
 	{"modelName": 'PlmFlexibleEntityValues', "model": PlmFlexibleEntityValuesModel},
+	{"modelName": 'plmProductEntity', "model": plmProductEntityModel},
+	{"modelName": 'plmProductAttributes', "model": plmProductAttributesModel},
 ];
 
 var totalModels = listOfModels.length;

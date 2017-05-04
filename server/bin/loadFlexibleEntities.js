@@ -5,6 +5,10 @@ var colors = require('colors/safe');
 
 var mysql      = require('mysql');
 
+const args = process.argv;
+
+var inputSheetName = process.argv[2];
+
 var inputFileName = "FlexibleEntities.xlsx";
 
 if(typeof require !== 'undefined') XLSX = require('xlsx');
@@ -24,7 +28,7 @@ async.waterfall(
 	  	
 		sheet_name_list.forEach(function(y) {
 			
-			if (y == "FlexibleEntities") {
+			if (inputSheetName == 'All' && y == "FlexibleEntities") {
 				console.log("++++++ Loading "+y);
 			  	var worksheet = workbook.Sheets[y];
 			    var flexEntities =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
@@ -67,7 +71,7 @@ async.waterfall(
     function(flexEntitiesList, callback) {
 
     	sheet_name_list.forEach(function(y) {
-			if (y == "FlexibleEntitiesColumns") {
+			if (inputSheetName == 'All' && y == "FlexibleEntitiesColumns") {
 				console.log("Loading "+y);
 			  	var worksheet = workbook.Sheets[y];
 			    var flexEntColumns =   XLSX.utils.sheet_to_json(worksheet, {raw: true});
@@ -122,7 +126,8 @@ async.waterfall(
     function(flexEntityColumnsList, callback) {
 
     	sheet_name_list.forEach(function(y) {
-			if (y !== "FlexibleEntitiesColumns" && y !== "FlexibleEntities") {
+			if ((inputSheetName == 'All' || y == inputSheetName ) && 
+				y !== "FlexibleEntitiesColumns" && y !== "FlexibleEntities") {
 				console.log("================ Loading "+y);
 
 				var pickedFlexEntity = lodash.filter(flexEntityColumnsList, 
@@ -161,10 +166,9 @@ async.waterfall(
 					        if (err) return console.log(err);
 
 					        count--;
-					        console.log("Pending records "+count)
+					        console.log("Pending PlmFlexibleEntityValues records "+count)
 					        if (count === 0) {
 					          var caption = "	√√ "+ y + " Loading : Done ";
-					          callback(null, caption);
 					        }
 					    });
 				    });

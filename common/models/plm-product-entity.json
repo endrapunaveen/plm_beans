@@ -7,7 +7,7 @@
   },
   "properties": {
     "productId": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "categoryId": {

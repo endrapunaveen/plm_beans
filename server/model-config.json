@@ -79,5 +79,9 @@
   "plmProductEntity": {
     "dataSource": "plmdev",
     "public": true
+  },
+  "plmProductAttributes": {
+    "dataSource": "plmdev",
+    "public": true
   }
 }
