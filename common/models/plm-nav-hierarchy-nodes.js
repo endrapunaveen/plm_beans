@@ -35,7 +35,7 @@ module.exports = function(Plmhierarchynodes) {
 		
 		var app = require('../../server/server');
 		var dataSource = app.dataSources.plmdev;
-
+		/*
 		var sql = "SELECT T2.id, T2.hierarchyName, T2.parentHierarchyId \n "+
 				"	FROM (\n "+
 				"	    SELECT \n "+
@@ -59,8 +59,8 @@ module.exports = function(Plmhierarchynodes) {
 		   	console.log(results[0].id);
 		   	callback(null, results);
 		});
+		*/
 		
-		/*
 		var findObjectByLabel = function(hierObject, label) {
 			console.log(hierObject);
 
@@ -113,7 +113,7 @@ module.exports = function(Plmhierarchynodes) {
 		   	callback(null, results);
            
 		});
-		*/
+		
 	}
 
 	Plmhierarchynodes.remoteMethod(
